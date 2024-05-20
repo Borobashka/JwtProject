@@ -1,0 +1,18 @@
+services:
+  jwt_project:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: container_jwt_project
+    environment:
+      POSTGRES_USER: postgres_jwt_project
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: jwt_project
+    ports:
+      - '5432:5432'
+    expose:
+      - 5432
+    volumes:
+      - orders_app_volume:/var/lib/postgresql/data
+volumes:
+  orders_app_volume:
